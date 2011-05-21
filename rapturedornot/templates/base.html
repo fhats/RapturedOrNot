@@ -9,16 +9,16 @@
         <link rel="stylesheet" href="{{url_for('static', filename='css/rapturedornot.css')}}" type="text/css">
         
         {% block styles %}{% endblock %}
-                
+        <script src="http://connect.facebook.net/en_US/all.js"></script>      
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+        <script src="{{url_for('static', filename='js/rapturedornot.js')}}"></script>
         {% block scripts %}{% endblock %}
         
 		<script src="http://connect.facebook.net/en_US/all.js"></script>
     </head>
     <body>
         <div id="fb-root"></div>
-        <script src="http://connect.facebook.net/en_US/all.js"></script>
         <script>
           FB.init({
             appId  : '214537948568193',
@@ -29,6 +29,18 @@
         </script>
         
         <div class="container">
+            <div class="span-24 prepend-top last">
+                <center>
+                    <span class="small">Are you</span>
+                </center>
+            </div>
+            <div class="span-24 last">
+                <center>
+                    <h1>Raptured or Not?</h1>
+                </center>
+            </div>
+        </div>
+    
             <div class="span-24 last header">
                 <br/>
                 <a href="/"><img src="{{url_for('static', filename='img/logo.png')}}" alt="logo"/></a>

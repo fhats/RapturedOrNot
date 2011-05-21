@@ -2,20 +2,7 @@
 
 {% block content %}
 
-<div class="span-24 last" style="text-align: center;">
-    <br/>
-    <h3>75% of your friends think you'll be rapture'd!</h3>
+<div class="span-24 last" id="fb_info">
+<fb:login-button>Login with Facebok</fb:login-button>
 </div>
-
-{% if session.username %}
-<!-- Logged in? -->
-
-
-
-{% else %}
-<!-- Not logged in? -->
-
-	<fb:login-button>Login with Facebook</fb:login-button>
-
-{% endif %}
 {% endblock %}
