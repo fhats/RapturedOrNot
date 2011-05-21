@@ -13,7 +13,7 @@ from google.appengine.ext import db
 
 @app.route('/')
 def index():
-    percentage = -1
+    percentage = None
     user = None
     if session.has_key('username'):
         user = Voter.all().filter("fb_id =", session['username']).get()
@@ -126,6 +126,8 @@ def vote(ix, val):
     fb_id = session['username']
     voter = Voter.all().filter("fb_id =", fb_id).get()
     votee = Votee.all().filter("fb_id =", voter.friend_ids[ix]).get()
+    if votee is None:
+        votee = Votee(fb_id=voter.friend_ids[ix], upvotes=0, voters=1)
     if voter.votes[ix] and not val:
         votee.upvotes -= 1
     elif not voter.votes[ix] and val:

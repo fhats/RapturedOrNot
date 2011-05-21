@@ -6,7 +6,7 @@
     <br/>
     <h1>THE RAPTURE IS COMING!</h1>
     <h1>ARE YOU READY?</h1>
-    {% if percentage > -1 %}<h1>{{percentage}}% of your friends think so!</h1>{% endif %}
+    {% if percentage != None %}<h1>{{percentage}}% of your friends think so!</h1>{% endif %}
     <br/>
     {% if user %}
         <h2><a href={{url_for('show', which_friend=0)}}>Vote for your friends now!</a></h2>
