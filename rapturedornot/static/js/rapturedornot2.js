@@ -15,8 +15,20 @@ FB.Event.subscribe('auth.login', function(response){
                     fb_id: response.session.uid
                   },
             dataType: "json",
+			success: function(data){
+				if(data.status == "error" && data.needs == "friends"){
+					FB.api('/me/friends', function(friendResponse) {
+						alert(friendResponse.data);
+					});
+				}
+				else if(data.status == "ok"){
+					FB.api('/me/picture',{type: large}, function(response){
+						alert();
+					});
+				}		
+			}
         });
-        
+
         $("#fb_info").empty();
         $("#fb_info").append("Hey you'z logged in!");
     }
