@@ -1,3 +1,7 @@
+body {
+    background-color:#eef;
+}
+
 .buttons{
     margin-left: auto;
     text-align: right;
@@ -6,4 +10,22 @@
 .subject{
     margin-right: auto;
     text-align: left;
+}
+
+.header {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.content {
+    margin-top: -5px;
+    background-color:#cfd;
+    border-left: 1px solid #aac;
+    border-right: 1px solid #aac;
+    padding-right: -2px;
+}
+
+.inner_content {
+    margin-top: 2em;
+    padding-bottom: 2em;
 }

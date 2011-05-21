@@ -30,22 +30,24 @@
         </div>
         
         <div class="container">
-            <div class="span-24 last">
+            <div class="span-24 last header">
                 <br/>
                 <img src="{{url_for('static', filename='img/logo.png')}}" alt="logo"/>
             </div>
-            <div class="span-24 last">
-                {% if session.username %}
-                <!-- Logged in? -->
+            <div class="span-24 last content">
+                <div class="span-22 prepend-1 append-1 last inner_content">
+                    {% if session.username %}
+                    <!-- Logged in? -->
 
 
 
-                {% else %}
-                <!-- Not logged in? -->
+                    {% else %}
+                    <!-- Not logged in? -->
 
-        			<fb:login-button>Login with Facebook</fb:login-button>
+            			<fb:login-button>Login with Facebook</fb:login-button>
 
-                {% endif %}
+                    {% endif %}
+                </div>
             </div>
         </div>
     
