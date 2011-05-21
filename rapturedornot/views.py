@@ -38,7 +38,7 @@ def login():
 
 @app.route('/create', methods=['POST'])
 def create():
-    friends = json.loads(request.forms['friendJson'])['data']
+    friends = json.loads(request.form['friendJson'])['data']
     logging.info(str(friends))
     
     fb_id = request.form['fb_id']
