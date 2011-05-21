@@ -21,14 +21,12 @@ def login():
     fb_id = request.form['fb_id']
     session['username'] = fb_id
     
-    logging.info("HEY BUDDY: %s" % fb_id)
-    
     #new_voter = db.get(request.form['fb_id'])
     
     new_voter = Voter.gql('where fb_id=:id', id=fb_id).fetch(1)
     
-    if new_voter is None:
-        return jsonify(status="error", need="friends")
+    if len(new_voter) == 0:
+        return jsonify(status="error", needs="friends")
     else:
         return jsonify(status="ok")
 
