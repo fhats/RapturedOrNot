@@ -39,6 +39,7 @@ def create():
     new_voter = Voter.all().filter("fb_id =", fb_id).get()
     if new_voter is None:
         friends = json.loads(request.form['friends'])
+        logging.info(friends)
         new_voter = Voter(fb_id = request.form['fb_id'],
                           friend_names = [x['name'] for x in friends],
                           friend_ids = [x['id'] for x in friends],
@@ -52,7 +53,7 @@ def create():
                 votee.voters += 1
                 votee.put()
         db.put(new_voter)
-    return redirect(url_for('index', ))
+    return jsonify(status="ok", name="Lunchbox", id=920548)
 
 @app.route('/show/<int:which_friend>')
 def show(which_friend):
