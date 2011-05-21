@@ -31,15 +31,11 @@
         <div class="container">
             <div class="span-24 last header">
                 <br/>
-                <img src="{{url_for('static', filename='img/logo.png')}}" alt="logo"/>
+                <a href="/"><img src="{{url_for('static', filename='img/logo.png')}}" alt="logo"/></a>
             </div>
             <div class="span-24 last content">
-                <div class="span-22 prepend-1 append-1 last inner_content">
-                    {% block content %}{% endblock %}
-                </div>
+                {% block content %}{% endblock %}
             </div>
         </div>
-    
-
     </body>
 </html>
