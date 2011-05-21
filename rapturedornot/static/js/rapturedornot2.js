@@ -10,7 +10,12 @@ FB.getLoginStatus(function(response){
 			},
 			dataType: "json",
 			success: function(data){
-				window.location = "/show/0";
+				if(data.status == "ok"){
+                    window.location = "/";
+                }
+                else{
+                    //no-op
+                }
 			}
 		});
 	} 
@@ -45,6 +50,9 @@ FB.getLoginStatus(function(response){
 										fb_id: response.session.uid,
 										friendJson: JSON.stringify(friendResponse)
 									},
+                                    success: function(data){
+                                        window.location = "/";
+                                    }
 								});
 							});
 						}
