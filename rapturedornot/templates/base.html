@@ -10,6 +10,12 @@
         
         {% block styles %}{% endblock %}
 
+
+		<script src="http://www.json.org/json.js">alert("loaded json");</script>
+        <script src="http://connect.facebook.net/en_US/all.js">alert("loaded fb_all");</script>      
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js">alert("loaded jquery161");</script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js">alert("loaded jquery1813");</script>
+
         <script>
           FB.init({
             appId  : '214537948568193',
@@ -19,10 +25,6 @@
           });
         </script>
 
-		<script src="http://www.json.org/json.js">alert("loaded json");</script>
-        <script src="http://connect.facebook.net/en_US/all.js">alert("loaded fb_all");</script>      
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js">alert("loaded jquery161");</script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js">alert("loaded jquery1813");</script>
         <script src="/static/js/rapturedornot2.js">alert("loaded ours");</script>
         {% block scripts %}{% endblock %}
 
