@@ -1,4 +1,4 @@
-from blog import app
+from rapturedornot import app
 from models import Post
 from decorators import login_required
 

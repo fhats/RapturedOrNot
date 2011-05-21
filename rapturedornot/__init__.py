@@ -1,7 +1,7 @@
 from flask import Flask
 import settings
 
-app = Flask('blog')
-app.config.from_object('blog.settings')
+app = Flask('rapturedornot')
+app.config.from_object('rapturedornot.settings')
 
 import views
