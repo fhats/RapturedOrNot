@@ -21,7 +21,7 @@ def login():
     session['username'] = session.get('fb_id')
     new_voter = db.get(session.get('fb_id'))
     
-    logging.info("HEY BUDDY: %s", session['username'])
+    logging.info("HEY BUDDY: %s" % session['username'])
     
     if new_voter is None:
         return jsonify(status="error", need="friends")
