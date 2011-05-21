@@ -14,10 +14,14 @@ from google.appengine.ext import db
 @app.route('/')
 def index():
     percentage = -1
+    session['username'] = 'mud'
+    user = None
     if session.has_key('username'):
+        user = Voter.all().filter("fb_id =", session['username']).get()
         votee = Votee.all().filter("fb_id =", session['username']).get()
-        percentage = float(votee.upvotes)/votee.voters*100.0
-    return render_template('index.html', session=session, percentage=percentage)
+        if votee is not None:
+            percentage = float(votee.upvotes)/votee.voters*100.0
+    return render_template('index.html', session=session, percentage=percentage, user=user)
 
     
 @app.route('/login', methods=['POST'])
@@ -43,7 +47,33 @@ def create():
     new_voter = Voter.all().filter("fb_id =", fb_id).get()
     if new_voter is None:
         friends = json.loads(request.form['friends'])
-        new_voter = Voter(fb_id = request.form['fb_id'],
+        new_voter = Voter(fb_id = session['username'],
+                          friend_names = [x['name'] for x in friends],
+                          friend_ids = [x['id'] for x in friends],
+                          votes = [False for _ in friends])
+        for f in friends:
+            votee = Votee.all().filter("fb_id =", f['id']).get()
+            if votee is None:
+                new_votee = Votee(fb_id=f['id'], upvotes=0, voters=1)
+                new_votee.put()
+            else:
+                votee.voters += 1
+                votee.put()
+        db.put(new_voter)
+    return redirect(url_for('index', ))
+
+@app.route('/create2')
+def create2():
+    session['username'] = 'mud'
+    
+    new_voter = Voter.all().filter("fb_id =", session['username']).get()
+    if new_voter is None:
+        friends = [
+            dict(name='Harold', id='1'),
+            dict(name='Carol', id='2'),
+            dict(name='Darrell', id='3'),
+        ]
+        new_voter = Voter(fb_id = session['username'],
                           friend_names = [x['name'] for x in friends],
                           friend_ids = [x['id'] for x in friends],
                           votes = [False for _ in friends])
@@ -76,14 +106,15 @@ def show(which_friend):
 def list():
     fb_id = session['username']
     voter = Voter.all().filter("fb_id =", fb_id).get()
-    return render_template('all_votes.html', user=voter)
+    return render_template('all_votes.html', items = zip(voter.friend_names, voter.votes))
 
 def vote(ix, val):
     fb_id = session['username']
     voter = Voter.all().filter("fb_id =", fb_id).get()
     voter.votes[ix] = val
-    if which_friend < len(voter.friend_names)-1:
-        return redirect(url_for('show', which_friend=which_friend+1))
+    voter.put()
+    if ix < len(voter.friend_names)-1:
+        return redirect(url_for('show', which_friend=ix+1))
     else:
         return redirect(url_for('list'))
 
