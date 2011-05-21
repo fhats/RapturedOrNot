@@ -128,10 +128,11 @@ def vote(ix, val):
     votee = Votee.all().filter("fb_id =", voter.friend_ids[ix]).get()
     if voter.votes[ix] and not val:
         votee.upvotes -= 1
-    elif not voter.votes[ix] and val:
+    else if not voter.votes[ix] and val:
         votee.upvotes += 1
     voter.votes[ix] = val
     voter.put()
+    votee.put()
     if ix < len(voter.friend_names)-1:
         return redirect(url_for('show', which_friend=ix+1))
     else:
