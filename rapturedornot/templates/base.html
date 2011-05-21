@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="{{url_for('static', filename='css/blueprint/screen.css')}}" type="text/css" media="screen, projection">
         <link rel="stylesheet" href="{{url_for('static', filename='css/blueprint/print.css')}}" type="text/css" media="print">	
         <!--[if lt IE 8]><link rel="stylesheet" href="{{url_for('static', filename='css/blueprint/ie.css')}}" type="text/css" media="screen, projection"><![endif]-->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/rapturedornot.css')}} type="text/css">
         
         {% block styles %}{% endblock %}
                 
@@ -14,6 +15,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
         {% block scripts %}{% endblock %}
         
+		<script src="http://connect.facebook.net/en_US/all.js"></script>
     </head>
     <body>
         <div id="fb-root"></div>
@@ -41,16 +43,25 @@
             </div>
         </div>
     
+        <div class="container">
+            <div class="span-1 prepend-5" id="buttons">
+                &nbsp;
+            </div>
+            <div class="span-11 append-6 last" id="subject">
+                <img src="{{url_for('static', filename='img/fred.jpg')}}" />
+            </div>
+        </div>
+    
         {% if session.username %}
         <!-- Logged in? -->
         
-            <div class="container">
             
-            </div>
         
         {% else %}
         <!-- Not logged in? -->
-            
+        
+			<fb:login-button>Login with Facebook</fb:login-button>
+    
         {% endif %}
     </body>
 </html>
