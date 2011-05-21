@@ -63,7 +63,7 @@ def create():
         new_voter.friend_names = [x['name'] for x in friends]
         new_voter.friend_ids = [x['id'] for x in friends]
         if len(new_voter.votes) != len(new_voter.friend_names):
-            votes = [False for _ in friends])
+            votes = [False for _ in friends]
     db.put(new_voter)
     return redirect(url_for('index', ))
 
