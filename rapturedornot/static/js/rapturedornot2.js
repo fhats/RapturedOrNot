@@ -18,7 +18,7 @@ FB.Event.subscribe('auth.login', function(response){
 			success: function(data){
 				if(data.status == "error" && data.needs == "friends"){
 					FB.api('/me/friends', function(friendResponse) {
-						alert(jsonify(friendresponse));
+						alert(JSON.stringify(friendresponse));
                         /*$.ajax({
                         	
                         
