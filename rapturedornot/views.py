@@ -23,7 +23,7 @@ def create():
     session['fb_auth'] = session.get('fb_auth')
     new_voter = db.get(session.get('fb_id'))
     if new_voter is None:
-        friends = json.loads(session.get('friends')
+        friends = json.loads(session.get('friends'))
         new_voter = Voter(fb_id = session.get('fb_id'),
                           friends = friends),
                           votes = [False for _ in friends])
@@ -33,4 +33,3 @@ def create():
 @app.route('/show/<fb_id>/<int:which_friend>')
 def show(fb_id, which_friend):
     return render_template('base.html')
-    
