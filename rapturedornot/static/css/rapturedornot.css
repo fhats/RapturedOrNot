@@ -20,9 +20,15 @@ body {
 .content {
     background-color: #efefff;
     margin-top: -5px;
+    margin-bottom: 1em;
 }
 
-.inner_content {
+.footer {
     margin-top: 2em;
-    padding-bottom: 2em;
+    text-align: center;
+    color: #efefff;
+}
+
+.footer a {
+    color: #efefff;
 }
