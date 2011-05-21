@@ -47,7 +47,6 @@ def create():
     
     new_voter = Voter.all().filter("fb_id =", fb_id).get()
     if new_voter is None:
-        friends = json.loads(request.form['friends'])
         new_voter = Voter(fb_id = session['username'],
                           friend_names = [x['name'] for x in friends],
                           friend_ids = [x['id'] for x in friends],
@@ -60,7 +59,12 @@ def create():
             else:
                 votee.voters += 1
                 votee.put()
-        db.put(new_voter)
+    else:
+        new_voter.friend_names = [x['name'] for x in friends]
+        new_voter.friend_ids = [x['id'] for x in friends]
+        if len(new_voter.votes) != len(new_voter.friend_names):
+            votes = [False for _ in friends]
+    db.put(new_voter)
     return redirect(url_for('index', ))
 
 @app.route('/create2')
@@ -91,6 +95,7 @@ def create2():
 
 @app.route('/show/<int:which_friend>')
 def show(which_friend):
+    if not session.has_key('username'): return redirect(url_for('index'))
     fb_id = session['username']
     voter = Voter.all().filter("fb_id =", fb_id).get()
     friend_name = voter.friend_names[which_friend]
@@ -105,11 +110,13 @@ def show(which_friend):
 
 @app.route('/list')
 def list():
+    if not session.has_key('username'): return redirect(url_for('index'))
     fb_id = session['username']
     voter = Voter.all().filter("fb_id =", fb_id).get()
     return render_template('all_votes.html', items = zip(voter.friend_names, voter.votes))
 
 def vote(ix, val):
+    if not session.has_key('username'): return redirect(url_for('index'))
     fb_id = session['username']
     voter = Voter.all().filter("fb_id =", fb_id).get()
     voter.votes[ix] = val
