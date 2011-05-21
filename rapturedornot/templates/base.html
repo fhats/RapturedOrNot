@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html>
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
@@ -44,12 +43,24 @@
             </div>
         </div>
     
-        <div class="container">
-            <div class="span-1 prepend-5" id="buttons">
-                &nbsp;
+            <div class="span-24 last header">
+                <br/>
+                <img src="{{url_for('static', filename='img/logo.png')}}" alt="logo"/>
             </div>
-            <div class="span-11 append-6 last" id="subject">
-                <img src="{{url_for('static', filename='img/fred.jpg')}}" />
+            <div class="span-24 last content">
+                <div class="span-22 prepend-1 append-1 last inner_content">
+                    {% if session.username %}
+                    <!-- Logged in? -->
+
+
+
+                    {% else %}
+                    <!-- Not logged in? -->
+
+            			<fb:login-button>Login with Facebook</fb:login-button>
+
+                    {% endif %}
+                </div>
             </div>
         </div>
     
