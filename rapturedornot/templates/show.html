@@ -15,6 +15,7 @@
     <img src="{{url_for('static', filename='img/downboat.png')}}" alt="vote down"/>
 </div>
 <div class="span-24 last" style="text-align: center;">
-    <a href="#next" style="font-size: 2em;">Next</a>
+    <a href="{{url_for('list')}}">Show your votes</a>
+    {% if next_url %}<a href="{{next_url}}" style="font-size: 2em;">Next</a>{% endif %}
 </div>
 {% endblock %}
