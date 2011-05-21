@@ -61,8 +61,10 @@ def show(which_friend):
     friend_name = voter.friend_names[which_friend]
     friend_fb_id = voter.friend_ids[which_friend]
     next_url = url_for('show', which_friend=which_friend+1) if (which_friend < len(voter.friend_names)-1) else None
+    upvote_url = url_for('upvote', which_friend=which_friend)
+    downvote_url = url_for('downvote', which_friend=which_friend)
     if voter is not None:
-        return render_template('show.html', friend_name=friend_name, friend_fb_id=friend_fb_id, next_url=next_url)
+        return render_template('show.html', friend_name=friend_name, friend_fb_id=friend_fb_id, next_url=next_url, upvote_url=upvote_url, downvote_url = downvote_url)
     else:
         return redirect(url_for('index'))
 

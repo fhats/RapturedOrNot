@@ -10,9 +10,13 @@
 </div>
 <div class="span-8 last" style="text-align: center;">
     <br/><br/><br/>
+    <a href="{{upvote_link}}" alt="up vote">
     <img src="{{url_for('static', filename='img/upboat.png')}}" alt="vote up"/>
+    </a>
     <br/><br/>
+    <a href="{{downvote_link}}" alt="down vote">
     <img src="{{url_for('static', filename='img/downboat.png')}}" alt="vote down"/>
+    </a>
 </div>
 <div class="span-24 last" style="text-align: center;">
     <a href="{{url_for('list')}}">Show your votes</a>
