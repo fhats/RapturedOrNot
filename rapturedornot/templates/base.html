@@ -9,24 +9,31 @@
         <link rel="stylesheet" href="{{url_for('static', filename='css/rapturedornot.css')}}" type="text/css">
         
         {% block styles %}{% endblock %}
-		<script src="http://www.json.org/json.js">alert("loaded json");</script>
-        <script src="http://connect.facebook.net/en_US/all.js">alert("loaded fb_all");</script>      
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js">alert("loaded jquery161");</script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js">alert("loaded jquery1813");</script>
-        <script src="/static/js/rapturedornot2.js">alert("loaded ours");</script>
+
+
+		<script src="http://www.json.org/json.js"></script>
+        <script src="http://connect.facebook.net/en_US/all.js"></script>      
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+
+
         {% block scripts %}{% endblock %}
 
     </head>
     <body>
-        <div id="fb-root"></div>
-        <script>
-          FB.init({
-            appId  : '214537948568193',
-            status : true, // check login status
-            cookie : true, // enable cookies to allow the server to access the session
-            xfbml  : true  // parse XFBML
-          });
-        </script>
+        <div id="fb-root">
+        	
+	        <script>
+	          FB.init({
+	            appId  : '214537948568193',
+	            status : true, // check login status
+	            cookie : true, // enable cookies to allow the server to access the session
+	            xfbml  : true  // parse XFBML
+	          });
+	        </script>
+        </div>
+
+        <script src="/static/js/rapturedornot2.js"></script>
         
         <div class="container">
             <div class="span-24 last header">
