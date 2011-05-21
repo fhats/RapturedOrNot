@@ -2,7 +2,13 @@
 
 {% block content %}
 
-<div class="span-24 last" id="fb_info">
-<fb:login-button>Login with Facebok</fb:login-button>
+<div class="span-24 last" id="fb_info" style="text-align: center;">
+    <br/>
+    <h1>THE RAPTURE IS COMING!</h1>
+    <h1>ARE YOU READY?</h1>
+    <br/>
+    <h2>Log into Facebook to vote on your friends being raptured <img src="{{url_for('static', filename='img/upboat.png')}}" width=50 height=50 alt="vote up"/> or left behind <img src="{{url_for('static', filename='img/downboat.png')}}" width=50 height=50 alt="vote down"/>!</h2>
+    <fb:login-button>Login with Facebok</fb:login-button>
+    <br/><br/>
 </div>
 {% endblock %}
