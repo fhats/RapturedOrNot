@@ -20,7 +20,7 @@ body {
 .content {
     margin-top: -5px;
     background-color:#dfe;
-    border-left: 1px solid #aac;
+    border-left: 10px solid #aac;
     border-right: 1px solid #aac;
     border-bottom: 1px solid #aac;
 }
