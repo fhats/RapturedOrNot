@@ -30,11 +30,11 @@ def login():
 
 @app.route('/create', methods=['POST'])
 def create():
-    session['username'] = session.get('fb_id')
-    new_voter = db.get(session.get('fb_id'))
+    session['username'] = request.form['fb_id']
+    new_voter = db.get(request.form['fb_id'])
     if new_voter is None:
-        friends = json.loads(session.get('friends'))
-        new_voter = Voter(fb_id = session.get('fb_id'),
+        friends = json.loads(request.form['friends'])
+        new_voter = Voter(fb_id = request.form['fb_id'],
                           friends = friends,
                           votes = [False for _ in friends])
         db.put(new_voter)
