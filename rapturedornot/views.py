@@ -25,7 +25,7 @@ def create():
     if new_voter is None:
         friends = json.loads(session.get('friends'))
         new_voter = Voter(fb_id = session.get('fb_id'),
-                          friends = friends),
+                          friends = friends,
                           votes = [False for _ in friends])
         db.put(new_voter)
     return redirect(url_for('show', fb_id, 0))
