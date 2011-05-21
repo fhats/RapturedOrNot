@@ -22,9 +22,15 @@ FB.Event.subscribe('auth.login', function(response){
 					});
 				}
 				else if(data.status == "ok"){
-					FB.api('/me/picture',{type: large}, function(response){
-						alert();
+					var requestURL = "/";
+					requestURL.append(data.friendUID);
+					requestURL.append("/picture");
+					FB.api(requestURL,{type: "large"}, function(response){
+						alert(response);
 					});
+				}
+				else{
+					alert("miss!");
 				}		
 			}
         });
