@@ -38,6 +38,7 @@ def login():
 
 @app.route('/create', methods=['POST'])
 def create():
+    logging.info(request.form['friendJson'])
     friends = json.loads(request.form['friendJson'])['data']
     logging.info(str(friends))
     
