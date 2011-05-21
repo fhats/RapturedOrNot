@@ -42,7 +42,7 @@ def create():
 
 @app.route('/show/<fb_id>/<int:which_friend>')
 def show(fb_id, which_friend):
-    return render_template('index.html')
+    return render_template('show.html')
 
     
 @app.route('/privacy')
