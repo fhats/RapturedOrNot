@@ -11,7 +11,7 @@ from google.appengine.ext import db
 
 @app.route('/')
 def index():
-    return render_template('base.html')
+    return render_template('base.html', session=session)
 
 @app.route('/loginplz')
 def loginplz():
@@ -20,6 +20,7 @@ def loginplz():
 @app.route('/create', methods=['POST'])
 def create():
     session['username'] = session.get('fb_id')
+    session['fb_auth'] = session.get('fb_auth')
     new_voter = db.get(session.get('fb_id'))
     if new_voter is None:
         new_voter = Voter(fb_id = session.get('fb_id'),
