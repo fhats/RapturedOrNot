@@ -19,10 +19,10 @@ body {
 
 .content {
     margin-top: -5px;
-    background-color:#cfd;
+    background-color:#dfe;
     border-left: 1px solid #aac;
     border-right: 1px solid #aac;
-    padding-right: -2px;
+    border-bottom: 1px solid #aac;
 }
 
 .inner_content {
