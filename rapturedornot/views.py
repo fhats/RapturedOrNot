@@ -128,7 +128,7 @@ def vote(ix, val):
     votee = Votee.all().filter("fb_id =", voter.friend_ids[ix]).get()
     if voter.votes[ix] and not val:
         votee.upvotes -= 1
-    else if not voter.votes[ix] and val:
+    elif not voter.votes[ix] and val:
         votee.upvotes += 1
     voter.votes[ix] = val
     voter.put()
