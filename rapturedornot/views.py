@@ -56,15 +56,37 @@ def create():
 
 @app.route('/show/<int:which_friend>')
 def show(which_friend):
-    return render_template('show.html')
+    fb_id = session['username']
+    voter = Voter.all().filter("fb_id =", fb_id).get()
+    friend_name = voter.friend_names[which_friend]
+    friend_fb_id = voter.friend_ids[which_friend]
+    if voter is not None:
+        return render_template('show.html', friend_name=friend_name, friend_fb_id=friend_fb_id)
+    else:
+        return redirect(url_for('index'))
+
+@app.route('/list')
+def list():
+    fb_id = session['username']
+    voter = Voter.all().filter("fb_id =", fb_id).get()
+    return render_template('all_votes.html', user=voter)
+
+def vote(ix, val):
+    fb_id = session['username']
+    voter = Voter.all().filter("fb_id =", fb_id).get()
+    voter.votes[ix] = val
+    if which_friend < len(voter.friend_names)-1:
+        return redirect(url_for('show', which_friend=which_friend+1))
+    else:
+        return redirect(url_for('list'))
 
 @app.route('/upvote/<int:which_friend>')
 def upvote(which_friend):
-    return redirect(url_for('show', which_friend=0))
+    return vote(which_friend, True)
 
 @app.route('/downvote/<int:which_friend>')
 def downvote(which_friend):
-    return redirect(url_for('show', which_friend=0))
+    return vote(which_friend, False)
     
 @app.route('/privacy')
 def privacy():
