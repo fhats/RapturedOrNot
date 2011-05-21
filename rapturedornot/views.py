@@ -14,7 +14,6 @@ from google.appengine.ext import db
 @app.route('/')
 def index():
     percentage = -1
-    session['username'] = 'mud'
     user = None
     if session.has_key('username'):
         user = Voter.all().filter("fb_id =", session['username']).get()
@@ -39,7 +38,8 @@ def login():
 
 @app.route('/create', methods=['POST'])
 def create():
-    logging.info(request.form['friends'])
+    friends = simplejson.loads(request.['friendResponse'])['data']
+    logging.info(str(friends))
     
     fb_id = request.form['fb_id']
     session['username'] = fb_id
