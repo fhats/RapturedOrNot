@@ -13,8 +13,8 @@
     {% else %}
         <script src="/static/js/rapturedornot2.js"></script>
         <h2>Log into Facebook to vote on your friends being raptured <img src="{{url_for('static', filename='img/upboat.png')}}" width=50 height=50 alt="vote up"/> or left behind <img src="{{url_for('static', filename='img/downboat.png')}}" width=50 height=50 alt="vote down"/>!</h2>
+        <fb:login-button>Login with Facebok</fb:login-button>
     {% endif %}
-	        <fb:login-button>Login with Facebok</fb:login-button>
 	<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=34069187517&amp;xfbml=1"></script><fb:like href="" send="true" width="450" show_faces="true" font=""></fb:like>
 
     <br/><br/>
