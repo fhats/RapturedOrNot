@@ -1,7 +1,6 @@
 from google.appengine.ext import db
 
-class Post(db.Model):
-    title = db.StringProperty(required = True)
-    content = db.TextProperty(required = True)
-    when = db.DateTimeProperty(auto_now_add = True)
-    author = db.UserProperty(required = True)
+class Cultist(db.Model):
+    fb_id = db.StringProperty(required = True)
+    upvotes = db.IntegerProperty(required = True)
+    voters = db.IntegerProperty(required = True)
