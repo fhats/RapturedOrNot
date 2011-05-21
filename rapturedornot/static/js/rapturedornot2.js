@@ -16,7 +16,7 @@ FB.Event.subscribe('auth.login', function(response){
                   },
             dataType: "json",
         });
-        
+        alert(response);
         $("#fb_info").empty();
         $("#fb_info").append("Hey you'z logged in!");
     }

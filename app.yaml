@@ -1,10 +1,8 @@
 application: rapturedornot
-version: 3
+version: 4
 runtime: python
 api_version: 1
 
 handlers:
 - url: .*
   script: main.py
-- url: /static
-  static_dir: rapturedornot/static

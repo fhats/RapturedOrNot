@@ -5,7 +5,7 @@ import logging
 from rapturedornot import app
 from models import *
 
-from flask import render_template, flash, jsonify, url_for, redirect, session
+from flask import request, render_template, flash, jsonify, url_for, redirect, session
 from flaskext import wtf
 from flaskext.wtf import validators
 
@@ -18,11 +18,14 @@ def index():
     
 @app.route('/login', methods=['POST'])
 def login():
-    session['username'] = session.get('fb_id')
-    new_voter = db.get(session.get('fb_id'))
+    session['username'] = request.form['fb_id']
     
-    logging.info("HEY BUDDY: %s" % session['username'])
+    logging.info("HEY BUDDY: %s" % request.form['fb_id'])
     
+    new_voter = db.get(request.form['fb_id'])
+    
+    
+    new_voter = None
     if new_voter is None:
         return jsonify(status="error", need="friends")
     else:
