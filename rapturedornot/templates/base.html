@@ -9,11 +9,11 @@
         <link rel="stylesheet" href="{{url_for('static', filename='css/rapturedornot.css')}}" type="text/css">
         
         {% block styles %}{% endblock %}
-		<script src="http://www.json.org/json.js"></script>
-        <script src="http://connect.facebook.net/en_US/all.js"></script>      
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
-        <script src="/static/js/rapturedornot2.js"></script>
+		<script src="http://www.json.org/json.js">alert("loaded json");</script>
+        <script src="http://connect.facebook.net/en_US/all.js">alert("loaded fb_all");</script>      
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js">alert("loaded jquery161");</script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js">alert("loaded jquery1813");</script>
+        <script src="/static/js/rapturedornot2.js">alert("loaded ours");</script>
         {% block scripts %}{% endblock %}
 
     </head>
