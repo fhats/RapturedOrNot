@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+{% for fname, fvote in zip(user.friend_names, user.votes) %}
+{{fname}}: {% if fvote %}<img src="{{url_for('static', filename='img/upboat.png')}}" width=50 height=50 alt="vote up"/>{% else %}<img src="{{url_for('static', filename='img/downboat.png')}}" width=50 height=50 alt="vote down"/>{% endif %}<br/><br/>
+{% endfor %}
 {% endblock %}
