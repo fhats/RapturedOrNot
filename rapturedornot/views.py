@@ -21,11 +21,10 @@ def login():
     fb_id = request.form['fb_id']
     session['username'] = fb_id
     
-    #new_voter = db.get(request.form['fb_id'])
+    new_voter = Voter.all().filter("fb_id =", fb_id).get()
     
-    new_voter = Voter.gql('where fb_id=:id', id=fb_id).fetch(1)
-    
-    if len(new_voter) == 0:
+    if new_voter is None:
+        # JS sends us over to create()
         return jsonify(status="error", needs="friends")
     else:
         return jsonify(status="ok")
@@ -33,12 +32,16 @@ def login():
 @app.route('/create', methods=['POST'])
 def create():
     logging.info(request.form['friends'])
-    session['username'] = request.form['fb_id']
-    new_voter = db.get(request.form['fb_id'])
+    
+    fb_id = request.form['fb_id']
+    session['username'] = fb_id
+    
+    new_voter = Voter.all().filter("fb_id =", fb_id).get()
     if new_voter is None:
         friends = json.loads(request.form['friends'])
         new_voter = Voter(fb_id = request.form['fb_id'],
-                          friends = friends,
+                          friend_names = [x['name'] for x in friends],
+                          friend_ids = [x['id'] for x in friends],
                           votes = [False for _ in friends])
         db.put(new_voter)
     return redirect(url_for('index', ))
