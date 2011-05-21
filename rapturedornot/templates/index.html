@@ -10,12 +10,22 @@
 {% if session.username %}
 <!-- Logged in? -->
 
-
+    
 
 {% else %}
 <!-- Not logged in? -->
 
 	<fb:login-button>Login with Facebook</fb:login-button>
+	
+	<script>
+	
+		FB.Event.subscribe('auth.login', function(response)){
+			
+		}
+	
+	</script>
+	
 
 {% endif %}
+
 {% endblock %}
