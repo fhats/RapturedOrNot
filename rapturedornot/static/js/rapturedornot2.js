@@ -19,15 +19,24 @@ FB.Event.subscribe('auth.login', function(response){
 				if(data.status == "error" && data.needs == "friends"){
                     alert("need f!");
 					FB.api('/me/friends', function(friendResponse) {
-						alert(JSON.stringify(friendresponse));
-                        /*$.ajax({
-                        	
-                        
-                        })*/
+						//alert(JSON.stringify(friendResponse));
+                        $.ajax({
+                        	type: 'POST',
+							url: '/create',
+							data: {
+								fb_id: response.session.uid,
+								friendJson: JSON.stringify(friendResponse)
+							},
+                        });
 					});
 				}
 				else if(data.status == "ok"){
-					populateFriendArea(data);
+					var requestURL = "/";
+					requestURL.append(data.friendUID);
+					requestURL.append("/picture");
+					FB.api(requestURL,{type: "large"}, function(response){
+						alert(JSON.stringify(response));
+					});
 				}
 				else{
 					alert("miss1!");
