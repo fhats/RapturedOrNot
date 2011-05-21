@@ -16,7 +16,7 @@ def index():
 @app.route('/loginplz')
 def loginplz():
     return render_template('loginplz.html')
-
+    
 @app.route('/create', methods=['POST'])
 def create():
     session['username'] = session.get('fb_id')

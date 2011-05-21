@@ -9,9 +9,10 @@
         <link rel="stylesheet" href="{{url_for('static', filename='css/rapturedornot.css')}}" type="text/css">
         
         {% block styles %}{% endblock %}
-                
+              
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
+        <script src="{{url_for('static', filename='js/rapturedornot.js')}}"></script>
         {% block scripts %}{% endblock %}
     </head>
     <body>
@@ -70,14 +71,6 @@
         <!-- Not logged in? -->
         
 			<fb:login-button>Login with Facebook</fb:login-button>
-			
-			<script>
-			
-				FB.Event.subscribe('auth.login', function(response)){
-					
-				}
-			
-			</script>
 			
     
         {% endif %}
