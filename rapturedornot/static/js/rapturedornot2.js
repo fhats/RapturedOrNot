@@ -18,11 +18,15 @@ FB.Event.subscribe('auth.login', function(response){
 			success: function(data){
 				if(data.status == "error" && data.needs == "friends"){
 					FB.api('/me/friends', function(friendResponse) {
-						alert(JSON.stringify(friendresponse));
-                        /*$.ajax({
-                        	
-                        
-                        })*/
+						//alert(JSON.stringify(friendResponse));
+                        $.ajax({
+                        	type: 'POST',
+							url: '/create',
+							data: {
+								fb_id: response.session.uid,
+								friendJson: JSON.stringify(friendResponse)
+							},
+                        });
 					});
 				}
 				else if(data.status == "ok"){
@@ -30,7 +34,7 @@ FB.Event.subscribe('auth.login', function(response){
 					requestURL.append(data.friendUID);
 					requestURL.append("/picture");
 					FB.api(requestURL,{type: "large"}, function(response){
-						alert(response);
+						alert(JSON.stringify(response));
 					});
 				}
 				else{
