@@ -32,20 +32,27 @@ def login():
 
 @app.route('/create', methods=['POST'])
 def create():
-    session['username'] = session.get('fb_id')
-    new_voter = db.get(session.get('fb_id'))
+    session['username'] = request.form['fb_id']
+    new_voter = db.get(request.form['fb_id'])
     if new_voter is None:
-        friends = json.loads(session.get('friends'))
-        new_voter = Voter(fb_id = session.get('fb_id'),
+        friends = json.loads(request.form['friends'])
+        new_voter = Voter(fb_id = request.form['fb_id'],
                           friends = friends,
                           votes = [False for _ in friends])
         db.put(new_voter)
     return redirect(url_for('index', ))
 
-@app.route('/show/<fb_id>/<int:which_friend>')
-def show(fb_id, which_friend):
+@app.route('/show/<int:which_friend>')
+def show(which_friend):
     return render_template('show.html')
 
+@app.route('/upvote/<int:which_friend>')
+def upvote(which_friend):
+    return redirect(url_for('show', which_friend=0))
+
+@app.route('/downvote/<int:which_friend>')
+def downvote(which_friend):
+    return redirect(url_for('show', which_friend=0))
     
 @app.route('/privacy')
 def privacy():
