@@ -19,6 +19,7 @@ def index():
         user = Voter.all().filter("fb_id =", session['username']).get()
         votee = Votee.all().filter("fb_id =", session['username']).get()
         if votee is not None:
+            logging.info("%d, %d", votee.upvotes, votee.voters)
             percentage = float(votee.upvotes)/votee.voters*100.0
     return render_template('index.html', session=session, percentage=percentage, user=user)
 
@@ -124,6 +125,11 @@ def vote(ix, val):
     if not session.has_key('username'): return redirect(url_for('index'))
     fb_id = session['username']
     voter = Voter.all().filter("fb_id =", fb_id).get()
+    votee = Votee.all().filter("fb_id =", voter.friend_ids[ix]).get()
+    if voter.votes[ix] and not val:
+        votee.upvotes -= 1
+    else if not voter.votes[ix] and val:
+        votee.upvotes += 1
     voter.votes[ix] = val
     voter.put()
     if ix < len(voter.friend_names)-1:
