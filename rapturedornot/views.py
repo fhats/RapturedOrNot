@@ -13,7 +13,11 @@ from google.appengine.ext import db
 
 @app.route('/')
 def index():
-    return render_template('index.html', session=session)
+    percentage = -1
+    if session.has_key('username'):
+        votee = Votee.all().filter("fb_id =", session['username']).get()
+        percentage = float(votee.upvotes)/votee.voters*100.0
+    return render_template('index.html', session=session, percentage=percentage)
 
     
 @app.route('/login', methods=['POST'])
