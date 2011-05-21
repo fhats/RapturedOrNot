@@ -1,5 +1,5 @@
 body {
-    background-color:#eef;
+    background-color:#668;
 }
 
 .buttons{
@@ -18,11 +18,8 @@ body {
 }
 
 .content {
+    background-color: #efefff;
     margin-top: -5px;
-    background-color:#dfe;
-    border-left: 10px solid #aac;
-    border-right: 1px solid #aac;
-    border-bottom: 1px solid #aac;
 }
 
 .inner_content {

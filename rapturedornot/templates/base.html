@@ -35,17 +35,7 @@
             </div>
             <div class="span-24 last content">
                 <div class="span-22 prepend-1 append-1 last inner_content">
-                    {% if session.username %}
-                    <!-- Logged in? -->
-
-
-
-                    {% else %}
-                    <!-- Not logged in? -->
-
-            			<fb:login-button>Login with Facebook</fb:login-button>
-
-                    {% endif %}
+                    {% block content %}{% endblock %}
                 </div>
             </div>
         </div>

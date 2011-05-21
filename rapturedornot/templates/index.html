@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if session.username %}
+<!-- Logged in? -->
+
+
+
+{% else %}
+<!-- Not logged in? -->
+
+	<fb:login-button>Login with Facebook</fb:login-button>
+
+{% endif %}
+{% endblock %}
