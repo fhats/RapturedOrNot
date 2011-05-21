@@ -43,6 +43,14 @@ def create():
                           friend_names = [x['name'] for x in friends],
                           friend_ids = [x['id'] for x in friends],
                           votes = [False for _ in friends])
+        for f in friends:
+            votee = Votee.all().filter("fb_id =", f['id']).get()
+            if votee is None:
+                new_votee = Votee(fb_id=f['id'], upvotes=0, voters=1)
+                new_votee.put()
+            else:
+                votee.voters += 1
+                votee.put()
         db.put(new_voter)
     return redirect(url_for('index', ))
 
