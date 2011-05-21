@@ -30,38 +30,25 @@
         </div>
         
         <div class="container">
-            <img src="{{url_for('static', filename='img/logo.png')}}" alt="logo"/>
-            <div class="span-24 prepend-top last">
-                <center>
-                    <span class="small">Are you</span>
-                </center>
+            <div class="span-24 last">
+                <br/>
+                <img src="{{url_for('static', filename='img/logo.png')}}" alt="logo"/>
             </div>
             <div class="span-24 last">
-                <center>
-                    <h1>Raptured or Not?</h1>
-                </center>
+                {% if session.username %}
+                <!-- Logged in? -->
+
+
+
+                {% else %}
+                <!-- Not logged in? -->
+
+        			<fb:login-button>Login with Facebook</fb:login-button>
+
+                {% endif %}
             </div>
         </div>
     
-        <div class="container">
-            <div class="span-1 prepend-5" id="buttons">
-                &nbsp;
-            </div>
-            <div class="span-11 append-6 last" id="subject">
-                <img src="{{url_for('static', filename='img/fred.jpg')}}" />
-            </div>
-        </div>
-    
-        {% if session.username %}
-        <!-- Logged in? -->
-        
-            
-        
-        {% else %}
-        <!-- Not logged in? -->
-        
-			<fb:login-button>Login with Facebook</fb:login-button>
-    
-        {% endif %}
+
     </body>
 </html>
