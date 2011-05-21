@@ -1,9 +1,44 @@
+<!doctype html>
+
 <html>
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
         <title>Raptured or Not?</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='css/blueprint/screen.css')}}" type="text/css" media="screen, projection">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/blueprint/print.css')}}" type="text/css" media="print">	
+        <!--[if lt IE 8]><link rel="stylesheet" href="{{url_for('static', filename='css/blueprint/ie.css')}}" type="text/css" media="screen, projection"><![endif]-->
+        
+        {% block styles %}{% endblock %}
+                
+        {% block scripts %}{% endblock %}
+        
     </head>
     <body>
+        <div id="fb-root"></div>
+        <script src="http://connect.facebook.net/en_US/all.js"></script>
+        <script>
+          FB.init({
+            appId  : '214537948568193',
+            status : true, // check login status
+            cookie : true, // enable cookies to allow the server to access the session
+            xfbml  : true  // parse XFBML
+          });
+        </script>
+        </div>
+        
+        <div class="container">
+            <div class="span-24 prepend-top last">
+                <center>
+                    <span class="small">Are you</span>
+                </center>
+            </div>
+            <div class="span-24 last">
+                <center>
+                    <h1>Raptured or Not?</h1>
+                </center>
+            </div>
+        </div>
+    
         <!-- Logged in? -->
         <!-- Not logged in? -->
     </body>
