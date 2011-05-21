@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+<html>
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
         <title>Raptured or Not?</title>
@@ -13,6 +13,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
         {% block scripts %}{% endblock %}
+        
+		<script src="http://connect.facebook.net/en_US/all.js"></script>
     </head>
     <body>
         <div id="fb-root"></div>
@@ -25,50 +27,19 @@
             xfbml  : true  // parse XFBML
           });
         </script>
-        </div>
         
         <div class="container">
-            <img src="{{url_for('static', filename='img/logo.png')}}" alt="logo"/>
-            <div class="span-24 prepend-top last">
-                <center>
-                    <span class="small">Are you</span>
-                </center>
+            <div class="span-24 last header">
+                <br/>
+                <img src="{{url_for('static', filename='img/logo.png')}}" alt="logo"/>
             </div>
-            <div class="span-24 last">
-                <center>
-                    <h1>Raptured or Not?</h1>
-                </center>
+            <div class="span-24 last content">
+                <div class="span-22 prepend-1 append-1 last inner_content">
+                    {% block content %}{% endblock %}
+                </div>
             </div>
         </div>
     
-        <div class="container">
-            <div class="span-1 prepend-5" id="buttons">
-                &nbsp;
-            </div>
-            <div class="span-11 append-6 last" id="subject">
-                <img src="{{url_for('static', filename='img/fred.jpg')}}" />
-            </div>
-        </div>
-    
-        {% if session.username %}
-        <!-- Logged in? -->
-        
-            
-        
-        {% else %}
-        <!-- Not logged in? -->
-        
-			<fb:login-button>Login with Facebook</fb:login-button>
-			
-			<script>
-			
-				FB.Event.subscribe('auth.login', function(response)){
-					
-				}
-			
-			</script>
-			
-    
-        {% endif %}
+
     </body>
 </html>

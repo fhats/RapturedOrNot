@@ -11,11 +11,7 @@ from google.appengine.ext import db
 
 @app.route('/')
 def index():
-    return render_template('base.html', session=session)
-
-@app.route('/loginplz')
-def loginplz():
-    return render_template('loginplz.html')
+    return render_template('index.html', session=session)
 
 @app.route('/create', methods=['POST'])
 def create():
@@ -32,7 +28,7 @@ def create():
 
 @app.route('/show/<fb_id>/<int:which_friend>')
 def show(fb_id, which_friend):
-    return render_template('base.html')
+    return render_template('index.html')
 
     
 @app.route('/privacy')
