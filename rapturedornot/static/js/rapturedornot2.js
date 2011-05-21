@@ -24,10 +24,8 @@ FB.getLoginStatus(function(response){
 
 
 		FB.Event.subscribe('auth.login', function(response){
-			alert(response.status);
 			if( response.status == "notConnected" || response.status == "unknown" ){
-				alert("Not logged in!!");
-				return false;
+				window.location = "/";
 			}
 			else{
 				//We got teh FBcksz!
@@ -40,7 +38,7 @@ FB.getLoginStatus(function(response){
 					dataType: "json",
 					success: function(data){
 						if(data.status == "error" && data.needs == "friends"){
-							alert("need f!");
+							//alert("need f!");
 							FB.api('/me/friends', function(friendResponse) {
 								//alert(JSON.stringify(friendResponse));
 								$.ajax({
@@ -57,12 +55,7 @@ FB.getLoginStatus(function(response){
 							});
 						}
 						else if(data.status == "ok"){
-							var requestURL = "/";
-							requestURL.append(data.friendUID);
-							requestURL.append("/picture");
-							FB.api(requestURL,{type: "large"}, function(response){
-								alert(JSON.stringify(response));
-							});
+							window.location = "/";
 						}
 						else{
 							alert("miss1!");
@@ -77,30 +70,5 @@ FB.getLoginStatus(function(response){
 				$("#fb_info").append("Hey you'z logged in!");
 			}
 		});
-
-		function newFriendCallback(data){
-			alert("fbcb!");
-			if(data.status == "ok"){
-				populateFriendArea(data.id, data.name);
-			}
-			else{
-				alert("miss4!");
-			}
-		}
-
-		function populateFriendArea(id, name){
-			alert("popf!");
-			$("#fb_content").empty();
-
-			var requestURL = "/";
-			requestURL.append(id);
-			requestURL.append("/picture");
-			FB.api(requestURL,{type: "large"}, function(response){
-				alert(response);
-			});
-
-		}
-
 	}
-
 });

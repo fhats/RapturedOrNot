@@ -5,7 +5,12 @@
     <h2>{{friend_name}}</h2>
 </div>
 <div class="span-7 prepend-5" style="text-align: center;">
-    <img src="http://placekitten.com/300/300" alt="a kitty"/>
+	<img src="http://placekitten.com/300/300" id="friendPix" alt="a kitty"/>
+    <script>
+		FB.api('/{{friend_fb_id}}/picture', {type: "large"}, function(response){
+			$("#friendPix").src=response
+		});
+	</script>
 </div>
 <div class="span-8 last" style="text-align: center;">
     <br/><br/><br/>
