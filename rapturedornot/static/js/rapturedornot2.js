@@ -17,16 +17,23 @@ FB.Event.subscribe('auth.login', function(response){
             dataType: "json",
 			success: function(data){
 				if(data.status == "error" && data.needs == "friends"){
-                    alert("No");
 					FB.api('/me/friends', function(friendResponse) {
-						alert(friendResponse.data);
+                        $.ajax({
+                        
+                        
+                        })
 					});
 				}
 				else if(data.status == "ok"){
-                    alert("Yes");
-					FB.api('/me/picture',{type: "large"}, function(response){
-						alert();
+					var requestURL = "/";
+					requestURL.append(data.friendUID);
+					requestURL.append("/picture");
+					FB.api(requestURL,{type: "large"}, function(response){
+						alert(response);
 					});
+				}
+				else{
+					alert("miss!");
 				}		
 			}
         });

@@ -32,6 +32,7 @@ def login():
 
 @app.route('/create', methods=['POST'])
 def create():
+    logging.info(request.form['friends'])
     session['username'] = request.form['fb_id']
     new_voter = db.get(request.form['fb_id'])
     if new_voter is None:
