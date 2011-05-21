@@ -1,7 +1,9 @@
 //Facebook crap
 
 FB.Event.subscribe('auth.login', function(response){
+    alert(response.status);
     if( response.status == "notConnected" || response.status == "unknown" ){
+        alert("Not logged in!!");
         return false;
     }
     else{
