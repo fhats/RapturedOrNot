@@ -132,6 +132,7 @@ def vote(ix, val):
         votee.upvotes += 1
     voter.votes[ix] = val
     voter.put()
+    votee.put()
     if ix < len(voter.friend_names)-1:
         return redirect(url_for('show', which_friend=ix+1))
     else:
