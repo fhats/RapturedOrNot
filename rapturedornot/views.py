@@ -43,10 +43,17 @@ def create():
         db.put(new_voter)
     return redirect(url_for('index', ))
 
-@app.route('/show/<fb_id>/<int:which_friend>')
-def show(fb_id, which_friend):
+@app.route('/show/<int:which_friend>')
+def show(which_friend):
     return render_template('show.html')
 
+@app.route('/upvote/<int:which_friend>')
+def upvote(which_friend):
+    return redirect(url_for('show', which_friend=0))
+
+@app.route('/downvote/<int:which_friend>')
+def downvote(which_friend):
+    return redirect(url_for('show', which_friend=0))
     
 @app.route('/privacy')
 def privacy():
