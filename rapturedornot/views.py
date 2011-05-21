@@ -3,7 +3,7 @@ import simplejson as json
 from rapturedornot import app
 from models import *
 
-from flask import render_template, flash, url_for, redirect
+from flask import render_template, flash, url_for, redirect, session
 from flaskext import wtf
 from flaskext.wtf import validators
 
