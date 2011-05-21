@@ -38,7 +38,8 @@ def login():
 
 @app.route('/create', methods=['POST'])
 def create():
-    friends = json.loads(request['friendJson'])['data']
+    logging.info(request.form['friendJson'])
+    friends = json.loads(request.form['friendJson'])['data']
     logging.info(str(friends))
     
     fb_id = request.form['fb_id']
@@ -86,7 +87,7 @@ def create2():
                 votee.voters += 1
                 votee.put()
         db.put(new_voter)
-    return redirect(url_for('index', ))
+    return jsonify(status="ok", name="Lunchbox", id=920548)
 
 @app.route('/show/<int:which_friend>')
 def show(which_friend):

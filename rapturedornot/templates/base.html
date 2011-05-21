@@ -9,10 +9,11 @@
         <link rel="stylesheet" href="{{url_for('static', filename='css/rapturedornot.css')}}" type="text/css">
         
         {% block styles %}{% endblock %}
+		<script src="http://www.json.org/json.js"></script>
         <script src="http://connect.facebook.net/en_US/all.js"></script>      
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
-        <script src="/static/js/rapturedornot2.js?version={{stupidtime}}"></script>
+        <script src="/static/js/rapturedornot2.js"></script>
         {% block scripts %}{% endblock %}
 
     </head>
