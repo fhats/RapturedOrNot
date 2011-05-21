@@ -108,6 +108,11 @@ def show(which_friend):
     else:
         return redirect(url_for('index'))
 
+@app.route('/logout')
+def logout():
+    del session['username']
+    return redirect(url_for('index'))
+
 @app.route('/list')
 def list():
     if not session.has_key('username'): return redirect(url_for('index'))
