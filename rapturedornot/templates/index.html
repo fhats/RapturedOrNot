@@ -6,9 +6,14 @@
     <br/>
     <h1>THE RAPTURE IS COMING!</h1>
     <h1>ARE YOU READY?</h1>
+    {% if percentage > -1 %}<h1>{{percentage}}% of your friends think so!</h1>{% endif %}
     <br/>
-    <div id="fb_content"><h2>Log into Facebook to vote on your friends being raptured <img src="{{url_for('static', filename='img/upboat.png')}}" width=50 height=50 alt="vote up"/> or left behind <img src="{{url_for('static', filename='img/downboat.png')}}" width=50 height=50 alt="vote down"/>!</h2>
-    <fb:login-button>Login with Facebok</fb:login-button></div>
+    {% if user %}
+        <h2><a href={{url_for('show', which_friend=0)}}>Vote for your friends now!</a></h2>
+    {% else %}
+        <h2>Log into Facebook to vote on your friends being raptured <img src="{{url_for('static', filename='img/upboat.png')}}" width=50 height=50 alt="vote up"/> or left behind <img src="{{url_for('static', filename='img/downboat.png')}}" width=50 height=50 alt="vote down"/>!</h2>
+        <fb:login-button>Login with Facebok</fb:login-button>
+    {% endif %}
     <br/><br/>
     <div class="span-12 prepend-6 last" style="font-size:1.2em; padding-bottom: 1em; text-align:left;">
         <p>You do know the Rapture is on its way, right? May 21, 6 PM local time? It's true. You know how I know?</p>

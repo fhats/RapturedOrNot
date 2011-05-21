@@ -19,19 +19,11 @@ FB.Event.subscribe('auth.login', function(response){
 				if(data.status == "error" && data.needs == "friends"){
                     alert("need f!");
 					FB.api('/me/friends', function(friendResponse) {
-                        $.ajax({
-                            type: 'POST',
-                            url: '/create',
-                            data: friendResponse.data,
-                            contentType: "application/json; charset=utf-8",
-                            dataType: "json",
-                            success: function(data){
-                                populateFriendArea(data);
-                            },
-                            error:  function(){
-                                alert("miss3!");
-                            }
-                        });
+						alert(JSON.stringify(friendresponse));
+                        /*$.ajax({
+                        	
+                        
+                        })*/
 					});
 				}
 				else if(data.status == "ok"){
