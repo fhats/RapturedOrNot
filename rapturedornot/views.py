@@ -18,14 +18,15 @@ def index():
     
 @app.route('/login', methods=['POST'])
 def login():
-    session['username'] = request.form['fb_id']
+    fb_id = request.form['fb_id']
+    session['username'] = fb_id
     
-    logging.info("HEY BUDDY: %s" % request.form['fb_id'])
+    logging.info("HEY BUDDY: %s" % fb_id)
     
-    new_voter = db.get(request.form['fb_id'])
+    #new_voter = db.get(request.form['fb_id'])
     
+    new_voter = Voter.gql('where fb_id=:id', id=fb_id).fetch(1)
     
-    new_voter = None
     if new_voter is None:
         return jsonify(status="error", need="friends")
     else:
