@@ -95,6 +95,7 @@ def create2():
 
 @app.route('/show/<int:which_friend>')
 def show(which_friend):
+    if not session.has_key('username'): return redirect(url_for('index'))
     fb_id = session['username']
     voter = Voter.all().filter("fb_id =", fb_id).get()
     friend_name = voter.friend_names[which_friend]
@@ -109,11 +110,13 @@ def show(which_friend):
 
 @app.route('/list')
 def list():
+    if not session.has_key('username'): return redirect(url_for('index'))
     fb_id = session['username']
     voter = Voter.all().filter("fb_id =", fb_id).get()
     return render_template('all_votes.html', items = zip(voter.friend_names, voter.votes))
 
 def vote(ix, val):
+    if not session.has_key('username'): return redirect(url_for('index'))
     fb_id = session['username']
     voter = Voter.all().filter("fb_id =", fb_id).get()
     voter.votes[ix] = val
