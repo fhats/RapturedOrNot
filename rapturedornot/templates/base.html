@@ -10,12 +10,26 @@
         
         {% block styles %}{% endblock %}
 
-
-		<script src="http://www.json.org/json.js"></script>
-        <script src="http://connect.facebook.net/en_US/all.js"></script>      
+        <script>
+            var i = 1;
+        </script
+		<script src="{{url_for('static', filename='js/json2.js')}}"></script>
+        <script>
+            var i = 1;
+        </script>
+        <script src="http://connect.facebook.net/en_US/all.js"></script>     
+        <script>
+            var i = 2;
+        </script>        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+        <script>
+            var i = 2;
+        </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
-
+        <script>
+            var i = 2;
+        </script>
+        
 
         {% block scripts %}{% endblock %}
 
@@ -32,8 +46,7 @@
 	          });
 	        </script>
         </div>
-
-        <script src="/static/js/rapturedornot2.js"></script>
+        
         
         <div class="container">
             <div class="span-24 last header">

@@ -4,14 +4,15 @@
 <div class="span-24 last" style="text-align: center;">
     <h2>{{friend_name}}</h2>
 </div>
-<div class="span-7 prepend-5" style="text-align: center;">
-	&nbsp;<img src="http://placekitten.com/300/300" id="friendPix" alt="a kitty"/>&nbsp;
-    <script>
-		FB.api('/{{friend_fb_id}}/picture', {type: "large"}, function(response){
-			$("#friendPix").src=response
-		});
-	</script>
+<div class="span-7 prepend-5" style="text-align: center;" id="friend_pix">
+	<img src="http://graph.facebook.com/{{friend_fb_id}}/picture?type=large"/>
 </div>
+<script>
+    /*FB.api('/{{friend_fb_id}}/picture', {type: "large"}, function(response){
+        $("#friend_pix").empty();
+        $("#friend_pix").append("<img src='" + response + "' />");
+    });*/
+</script>
 <div class="span-8 last" style="text-align: center;">
     <br/><br/><br/>
     <a href="{{upvote_url}}" alt="up vote">
