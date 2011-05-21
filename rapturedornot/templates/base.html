@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html>
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
@@ -7,6 +6,7 @@
         <link rel="stylesheet" href="{{url_for('static', filename='css/blueprint/screen.css')}}" type="text/css" media="screen, projection">
         <link rel="stylesheet" href="{{url_for('static', filename='css/blueprint/print.css')}}" type="text/css" media="print">	
         <!--[if lt IE 8]><link rel="stylesheet" href="{{url_for('static', filename='css/blueprint/ie.css')}}" type="text/css" media="screen, projection"><![endif]-->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/rapturedornot.css')}}" type="text/css">
         
         {% block styles %}{% endblock %}
                 
@@ -28,6 +28,7 @@
         </div>
         
         <div class="container">
+            <img src="{{url_for('static', filename='img/logo.png')}}" alt="logo"/>
             <div class="span-24 prepend-top last">
                 <center>
                     <span class="small">Are you</span>
@@ -43,12 +44,19 @@
             </div>
         </div>
     
+        <div class="container">
+            <div class="span-1 prepend-5" id="buttons">
+                &nbsp;
+            </div>
+            <div class="span-11 append-6 last" id="subject">
+                <img src="{{url_for('static', filename='img/fred.jpg')}}" />
+            </div>
+        </div>
+    
         {% if session.username %}
         <!-- Logged in? -->
         
-            <div class="container">
             
-            </div>
         
         {% else %}
         <!-- Not logged in? -->
